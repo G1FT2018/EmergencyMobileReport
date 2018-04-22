@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
- public function messages(){
-            return $this->hasMany('App\message');
- }
+    protected $fillable=[
+        'username','password','email','fullname','address','type'
+    ];
+
+    protected $hidden=['password'];
+
+
+    public function messages(){
+                return $this->hasMany('App\message');
+    }
 }

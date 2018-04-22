@@ -18,6 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->text('password');
             $table->string('email');
+            $table->enum('type',['standard','administrator']);
+            $table->string('fullname')->nullable();
+            $table->date('dob')->nullable();
+            $table->text('address')->nullable();
+            
             $table->timestamps();
         });
     }

@@ -16,17 +16,61 @@
 // });
 
 Route::get('/',function(){
-	return view('welcome');
+	return view('index');
+});
+Route::get('dashboard',function(){
+	return view('dashboard');
 });
 
+
+
+//Auth && user routes
+Route::get('login',function(){
+	return view('login');
+});
+Route::get('users', 'UserController@index');
+Route::post('users/update', 'UserController@update');
+Route::post('users/delete', 'UserController@delete');
 Route::post('register','UserController@create');
 Route::post('login', 'UserController@login');
 
-Route::get('users', 'UserController@getUsers');
-Route::post('create-message', 'MessageController@create');
 
-Route::get('messages', 'MessageController@getAll');
+/**
+ * Station routes
+ */
+Route::get('stations', 'StationController@index');
+Route::post('stations/create','StationController@create');
+Route::post('stations/update','StationController@update');
+Route::post('stations/delete','StationController@delete');
+
+/**
+ * Message Routes
+ */
+Route::get('messages','MessageController@index');
+Route::post('messages/post','MessageController@create');
+
+
+
+/**
+ * Emergency Unit routes
+ */
+Route::get('emergency-unit','ResponseController@emergencyWatch');
+Route::get('emergency-listen/{upperBound}','MessageController@realTime');
+Route::get('map-view/{lat}/{long}',function($lat,$long){
+	return view('map-view')->with([
+		'lat'=>$lat,
+		'long'=>$long
+	]);
+});
+
+/**
+ * To be removed
+ */
+
+ 
+/*Route::get('messages', 'MessageController@getAll');
 Route::post('submit', 'ResponseController@submit');
+Route::post('create-message', 'MessageController@create');
 
 
 Route::get('messages/{message_id}/response', 'ResponseController@getResponseByMessage');
@@ -35,7 +79,7 @@ Route::get('messages/{message_id}/response', 'ResponseController@getResponseByMe
 Route::get('messages/{message_id}/coordinates', 'MessageController@getMessageCoordinates');
 
 Route::get('messages/{station_id}', 'MessageController@getByStation');
-
+*/
 //Route::post('submitmessage', 'MessageController@submit');
 
 //Route::get('messages/{message_id}', 'MessageController@getMessage'); //used by station

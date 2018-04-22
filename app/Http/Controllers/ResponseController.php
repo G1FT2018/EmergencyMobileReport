@@ -11,6 +11,12 @@ use App\Message;
 class ResponseController extends Controller
 {
 
+    public function emergencyWatch(){
+        $alerts=\App\Message::unresponded();
+        return view('emergency-unit')->with([
+            'alerts'=>$alerts
+        ]);
+    }
     public function submit(Request $request){
 
         $validator = Validator::make($request->all(), [

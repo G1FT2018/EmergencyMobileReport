@@ -15,9 +15,10 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('content');
+            $table->string('emergency');
             $table->integer('station_id')->nullable()->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->boolean('responded')->default(0);
             $table->foreign('station_id')->references('id')->on('stations')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
