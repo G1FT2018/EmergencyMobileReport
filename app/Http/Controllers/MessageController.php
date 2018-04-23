@@ -23,6 +23,13 @@ class MessageController extends Controller
             'messages'=> $messages
         ]);
     }
+    
+    public function view($msgID){
+        $message=Message::findOrFail($msgID);
+        return view('message-view')->with([
+            'message'=> $message
+        ]);
+    }
 
     /**
      * @bried - receives client messsage alert 

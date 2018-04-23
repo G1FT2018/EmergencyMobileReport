@@ -22,7 +22,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand " href="dashboard">
+                <a class="navbar-brand " href="{{URL('dashboard')}}">
                     <i class="fa fa-phone logo"></i>&nbsp;
                             Emergency Reporting System
                 </a>

@@ -7,7 +7,7 @@
     <title>Map View</title>
 </head>
 <body>
-    <div class="map" id="map" style="with:100%;height:450px;">
+    <div class="map" id="map" style="with:100%;height:475px;">
 
     </div>
 

@@ -77,28 +77,25 @@
                       </div>
                       
                       <div class="list-group">
-                          <a href="#" class="list-group-item">
+                          @foreach($alerts as $alert)
+                          <a href="{{URL('messages/view',$alert->id)}}" class="list-group-item">
                               <i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;
-                              Hospital alert message
+                              {{ucfirst($alert->emergency)}} alert message
+                              @if($alert->emergency=='hospital')
                               <span class="badge">
                                   <i class="fa fa-hospital-o" aria-hidden="true"></i>
                               </span>
-                          </a>
-                          <a href="#" class="list-group-item">
-                                <i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;
-                                Fire alert message
-                                <span class="badge">
-                                    <i class="fa fa-fire"></i>
-                                </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;
-                                Police Alert message
-                                <span class="badge">
-                                    <i class="fa fa-legal" aria-hidden="true"></i>
-                                </span>
-                            </a>
-                     
+                              @elseif($alert->emergency=='police')
+                                    <span class="badge">
+                                        <i class="fa fa-legal" aria-hidden="true"></i>
+                                    </span>
+                             @elseif($alert->emergency=='fire')
+                                    <span class="badge">
+                                        <i class="fa fa-fire"></i>
+                                    </span>
+                            @endif
+                        </a>    
+                          @endforeach
                       </div>
                       
                 </div>

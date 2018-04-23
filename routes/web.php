@@ -19,7 +19,9 @@ Route::get('/',function(){
 	return view('index');
 });
 Route::get('dashboard',function(){
-	return view('dashboard');
+	return view('dashboard')->with([
+		'alerts'=>\App\Message::unresponded()
+	]);
 });
 
 
@@ -53,7 +55,8 @@ Route::post('stations/delete','StationController@delete');
  */
 Route::get('messages','MessageController@index');
 Route::post('messages/post','MessageController@create');
-
+Route::post('messages/post','MessageController@create');
+Route::get('messages/view/{id}','MessageController@view');
 
 
 /**
@@ -65,6 +68,13 @@ Route::get('map-view/{lat}/{long}',function($lat,$long){
 	return view('map-view')->with([
 		'lat'=>$lat,
 		'long'=>$long
+	]);
+});
+
+Route::get('reports',function(){
+	return view('status')->with([
+		'message'=>'feature under development',
+		'back_page'=>'dashboard'
 	]);
 });
 
