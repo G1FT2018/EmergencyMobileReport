@@ -82,7 +82,7 @@ class MessageController extends Controller
            foreach($newAlerts as $alert){
                $alert->username=$alert->user;
                $alert->station=$alert->station;
-               $alert->coordinate=$alert->coordinate;
+               $alert->coordinates=$alert->coordinates;
            }
            if(count($newAlerts)!=0){
                $upperBound=$newAlerts[0]->id;

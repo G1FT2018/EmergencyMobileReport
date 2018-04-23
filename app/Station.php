@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Station extends Model
 {
     protected $fillable=[
-        'name','phone','location'
+        'name','phone','location','stationlatitude','stationlongitude'
     ];
     
     public function messages(){

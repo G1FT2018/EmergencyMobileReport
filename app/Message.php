@@ -43,6 +43,6 @@ class Message extends Model
 
     public function coordinates()
     {
-    	return $this->hasOne('App\Coordinate');
+    	return $this->hasOne('App\Coordinate','message_id');
     }
 }

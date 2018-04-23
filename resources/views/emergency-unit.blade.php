@@ -115,9 +115,9 @@
                     $('[data-toggle="alert-view"]').on('click', function () {
                         alert=JSON.parse($(this).attr('data-alertData'));
                         station=JSON.parse($(this).attr('data-station'));
-                        console.log(station)
                         currentAlert=alert;
-                        var mapViewURL=mapURL+'/'+station.stationlatitude+'/'+station.stationlongitude;
+                        //set map view url to include coordinates for this user
+                        var mapViewURL=mapURL+'/'+alert.coordinates.latitude+'/'+alert.coordinates.longitude;
                         var mapView='<iframe style="width:100%;height:500px;"  src="'+mapViewURL+'"></iframe>';
                         console.log(mapViewURL);
                         $('#v-sender-name').text($(this).attr('data-sender'));

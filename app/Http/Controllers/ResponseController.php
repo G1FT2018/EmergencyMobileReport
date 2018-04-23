@@ -13,6 +13,9 @@ class ResponseController extends Controller
 
     public function emergencyWatch(){
         $alerts=\App\Message::unresponded();
+        foreach($alerts as $alert){
+            $alert->coordinates=$alert->coordinates;
+        }
         return view('emergency-unit')->with([
             'alerts'=>$alerts
         ]);

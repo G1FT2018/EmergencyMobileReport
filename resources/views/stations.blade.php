@@ -110,7 +110,14 @@
                                     <label for="firstname">Location</label>
                                     <input type="text" name="location" class="form-control" required>
                             </div>
-                            
+                            <div class="form-group">
+                                <label for="location">Latitude</label>
+                                <input type="text" name="latitude"  class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Longitude</label>
+                                <input type="text" name="longitude"  class="form-control" required>
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary rad-0">
                                     Create
@@ -163,6 +170,14 @@
                                                     <div class="form-group">
                                                             <label for="location">Location</label>
                                                             <input type="text" name="location" id="u-station-location" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="location">Latitude</label>
+                                                        <input type="text" name="latitude" id="u-station-latitude" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="location">Longitude</label>
+                                                        <input type="text" name="longitude" id="u-station-longitude" class="form-control" required>
                                                     </div>
                                                     
                                                     <div class="form-group">
@@ -227,7 +242,8 @@
                 $('#u-station-id').val(stationData.id);
                 $('#d-station-name').html("<strong>"+stationData.name+"</strong>");
                 $('#d-station-id').val(stationData.id);
-
+                $('#u-station-latitude').val(stationData.stationlatitude);
+                $('#u-station-longitude').val(stationData.stationlongitude);
                 $('#modify-station-win').modal('show');
             });
 

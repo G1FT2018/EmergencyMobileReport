@@ -10,9 +10,7 @@ class User extends Model
         'username','password','email','fullname','address','type'
     ];
 
-    protected $hidden=['password'];
-
-
+  
     public function messages(){
                 return $this->hasMany('App\message');
     }

@@ -50,12 +50,12 @@
                                     <i class="fa fa-archive" aria-hidden="true"></i>&nbsp;Reports</a>
                             </li>
                             <li>
-                                    <a href="{{URL('reports')}}">
+                                    <a href="{{URL('emergency-unit')}}">
                                         <i class="fa fa-bell" aria-hidden="true"></i>&nbsp;Emergency Unit</a>
                                 </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="dashboard.html">
+                                <a href="dashboard">
                                     <i class="glyphicon glyphicon-dashboard" aria-hidden="true"></i>&nbsp;Dashboard</a>
                             </li>
                         </ul>
@@ -65,7 +65,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa fa-user" aria-hidden="true"></i>&nbsp;<span id="user">{{ucfirst(session('username'))}}</span><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a></li>
+                            <li><a href="logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -75,7 +75,7 @@
 
 
     @yield('content')
-
+    @include('partials.settings-win')
     <script src="{{URL::asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{URL::asset('assets/vendor/toastr/toastr.min.js')}}"></script>

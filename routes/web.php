@@ -31,9 +31,14 @@ Route::get('login',function(){
 Route::get('users', 'UserController@index');
 Route::post('users/update', 'UserController@update');
 Route::post('users/delete', 'UserController@delete');
+Route::post('users/update-password', 'UserController@updatePassword');
 Route::post('register','UserController@create');
 Route::post('login', 'UserController@login');
-
+Route::get('logout',function(){
+	session(['username'=>null]);
+	return redirect('login');
+});
+Route::get('create-default-user','UserController@create');
 
 /**
  * Station routes

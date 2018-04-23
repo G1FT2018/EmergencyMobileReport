@@ -77,7 +77,7 @@ class UserController extends Controller
 
 
          if($user->save()){
-             $msg="{status:'ok','error':true,msg:'User successfully registered',user_id:'{$user->id}'}";
+             $msg="{status:'ok','error':false,msg:'User successfully registered',user_id:'{$user->id}'}";
          }
          else{
              $msg="{status:'bad','error':true,msg:'User registration failed due to an internal error'}";
@@ -184,6 +184,50 @@ class UserController extends Controller
         return view('status')->with([
             'message'=>json_encode($msg),
             'back_page'=>'users'
+        ]);
+    }
+
+    public function updatePassword(Request $request){
+        $validator = Validator::make($request->all(), [
+            'password'=>'required|confirmed',
+            'old_password'=>'required',
+        ]);
+
+        if($validator->fails()){
+            $msg=array(
+                'status'=>'bad',
+                'error' => true,
+                'msg' => $validator->errors()->all()
+            );
+
+            return view('status')->with([
+                'message'=>json_encode($msg),
+                'back_page'=>'users'
+            ]);
+        }
+
+        $user=user::where('username',session('username'))->first();
+        
+        if($user){
+            if(Hash::check($request->old_password,$user->password)){
+                $count=$user->update([
+                    'password'=>bcrypt($request->password),
+                ]);
+                $msg=($count>0) ? array('status'=>'ok','error' => false,'msg' =>'Password successfully updated') 
+                            : array('status'=>'bad','error' => true,'msg' =>'Password could not be successfully update');
+            }
+            else{
+                $msg=array('status'=>'bad','error' => true,'msg' =>'Your old password could not be confirmed');
+            }
+           
+        }
+        else{
+            $msg=array('status'=>'bad','error' => true,'msg' =>'User could not be found using that ID');
+        }
+
+        return view('status')->with([
+            'message'=>json_encode($msg),
+            'back_page'=>'dashboard'
         ]);
     }
 

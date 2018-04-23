@@ -21,6 +21,8 @@ class StationController extends Controller
             'name'=>'required|unique:stations',
             'phone'=>'required|string',
             'location'=>'required|string',
+            'latitude'=>'required|numeric',
+            'longitude'=>'required|numeric'
         ]);
 
         if($validator->fails()){
@@ -39,7 +41,9 @@ class StationController extends Controller
         $station = new Station([
             'name'=>$request->name,
             'phone'=>$request->phone,
-            'location'=>$request->location
+            'location'=>$request->location,
+            'stationlatitude'=>$request->latitude,
+            'stationlongitude'=>$request->longitude
         ]);
        
         if($station->save()){
@@ -69,6 +73,8 @@ class StationController extends Controller
             'name'=>'required',
             'phone'=>'required|string',
             'location'=>'required|string',
+            'latitude'=>'required|numeric',
+            'longitude'=>'required|numeric'
         ]);
 
         if($validator->fails()){
@@ -89,7 +95,9 @@ class StationController extends Controller
             $count=$station->update([
                 'name'=>$request->name,
                 'phone'=>$request->phone,
-                'location'=>$request->location
+                'location'=>$request->location,
+                'stationlatitude'=>$request->latitude,
+                'stationlongitude'=>$request->longitude
             ]);
 
             $msg=($count>0) ? array('status'=>'ok','error' => false,'msg' =>'Station successfully updated') 
