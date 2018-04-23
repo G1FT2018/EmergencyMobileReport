@@ -107,6 +107,7 @@ class MessageController extends Controller
 
            return json_encode($response);
     }
+    
     public function getAll(){
         $messages = Message::all();
 

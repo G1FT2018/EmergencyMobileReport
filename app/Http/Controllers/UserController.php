@@ -263,7 +263,13 @@ class UserController extends Controller
             'back_page'=>'users'
         ]);
     }
+    
+    public function downloadAPK(){
+        $file=public_path().'/app.apk';
+        $headers=array('Content-Type:application/apk');
 
+        return response()->download($file,'EmergencyApp.apk',$headers);
+    }
     //getting the messages for a particular user
     public function getResponses($id)
     {

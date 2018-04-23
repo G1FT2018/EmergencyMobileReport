@@ -22,7 +22,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand " href="{URL('/')}">
-                    <i class="fa fa-phone"></i>&nbsp;
+                    <i class="fa fa-phone logo"></i>&nbsp;
                     Emergency Reporting System
                 </a>
             </div>
@@ -46,9 +46,9 @@
                     </div>
                 </div>
                 
-                <button type="button" class="btn btn-default">
+                <a href="{{URL('download-apk')}}" class="btn btn-default" target="__blank">
                     <i class="fa fa-cloud-download"></i>&nbsp;Download APK
-                </button>
+                </a>
                       
             </div>
             <div class="col-sm-12">
