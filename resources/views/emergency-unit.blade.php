@@ -101,7 +101,7 @@
 @section('scripts')
     <script>
         //generate listen URL with upper bound URL
-        var upperBound="{{$alerts[0]->id}}"; //get the first alert as the upper bound as this is the last one that was received
+        var upperBound="{{(count($alerts)!=0) ? $alerts[0]->id : 0}}"; //get the first alert as the upper bound as this is the last one that was received
         var rawURL="{{URL('emergency-listen')}}";
         var getURL=rawURL+'/'+upperBound;
         var mapURL="{{URL('map-view')}}";

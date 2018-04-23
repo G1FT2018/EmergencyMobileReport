@@ -1,0 +1,10 @@
+$(document).ready(function(){
+    $.post('http://localhost:8000/messages/post',{
+        user_id:1,
+        emergency:'police',
+        latitude:-11.4389649,
+        longitude:34.00843950000001
+    },function(data,status){
+        console.log(data);
+    })
+})

@@ -221,10 +221,6 @@
     <script>
         var currentStation;
         $(document).ready(function(){
-            //set current username in navbar
-            var user='Fraganya';
-            $('#user').text(user);
-
             $('[data-toggle="station-view"]').on('click',function(){
                 stationData=JSON.parse($(this).attr('data-station-data'));
                 currentStation=stationData;
@@ -251,9 +247,12 @@
                 $('#no-station-panel').removeClass('hidden');
                 $('#station-panel').addClass('hidden');
             })
+            
+           
 
         });
     </script>
+
    @stop
 
 </body>
